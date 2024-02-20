@@ -21,10 +21,10 @@ namespace VectorGrafEditer_Kursovaya
         int endX = 0;
         int endY = 0;
         String mode;
-        Line line = new Line();
-        Elipce elipce = new Elipce();
-        Rectangle rectangle = new Rectangle();
         Graphics g;
+        Figure elipce = new Figure();
+        Figure line = new Figure();
+        Figure rectangle = new Figure();
         public Form1()
         {
             g = this.CreateGraphics();
@@ -42,7 +42,9 @@ namespace VectorGrafEditer_Kursovaya
                 p[i] = new Point[2];
             }
         }
-
+        /// <summary>
+        /// Метод (обработчик) события нажатия кнопки мыши
+        /// </summary>
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             mousedown = true;
@@ -59,7 +61,9 @@ namespace VectorGrafEditer_Kursovaya
                 p[catch_line_index][catch_point_index_Y].Y = e.Y;
             }
         }
-
+        /// <summary>
+        /// Метод (обработчик) события отпускания кнопки мыши
+        /// </summary>
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             mousedown = false;
@@ -91,7 +95,9 @@ namespace VectorGrafEditer_Kursovaya
             pictureBox1.Invalidate();
             mode = "Рисование";
         }
-
+        /// <summary>
+        /// Метод (обработчик) события движения кнопки мыши
+        /// </summary>
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (mousedown)
@@ -118,7 +124,10 @@ namespace VectorGrafEditer_Kursovaya
             }
             pictureBox1.Invalidate();
         }
-
+        /// <summary>
+        /// Метод (обработчик) события редактирования фигуры.
+        /// В нем реализован расчет координат при редактировании.
+        /// </summary>
         private void editObject(object sender, MouseEventArgs e)
         {
             for (int i = 0; i < objCount; i++)
@@ -254,7 +263,11 @@ namespace VectorGrafEditer_Kursovaya
                 }
             }
         }
-
+        /// <summary>
+        /// Основной метод рисования объектов на холсте
+        /// В нем реализована отрисовка объектов, сохранение положения фигур при изменении типа фигуры,
+        /// отрисовка проекции фигуры при редактировании.
+        /// </summary>
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             g = e.Graphics;
@@ -385,7 +398,9 @@ namespace VectorGrafEditer_Kursovaya
                 }
             }
         }
-
+        /// <summary>
+        /// Метод измения типа фигуры на линию
+        /// </summary>
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             selectedTool = "Line";
@@ -393,7 +408,9 @@ namespace VectorGrafEditer_Kursovaya
             toolStripButton2.Checked = false;
             toolStripButton3.Checked = false;
         }
-
+        /// <summary>
+        /// Метод измения типа фигуры на эллипс
+        /// </summary>
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             selectedTool = "Elipce";
@@ -401,7 +418,9 @@ namespace VectorGrafEditer_Kursovaya
             toolStripButton2.Checked = true;
             toolStripButton3.Checked = false;
         }
-
+        /// <summary>
+        /// Метод измения типа фигуры на прямоугольник
+        /// </summary>
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             selectedTool = "Rectangle";
@@ -409,12 +428,9 @@ namespace VectorGrafEditer_Kursovaya
             toolStripButton2.Checked = false;
             toolStripButton3.Checked = true;
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Метод измения цвета фигуры на черный
+        /// </summary>
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -424,7 +440,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetColor(objCount, Color.Black);
         }
-
+        /// <summary>
+        /// Метод измения цвета фигуры на синий
+        /// </summary>
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -434,7 +452,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetColor(objCount, Color.Blue);
         }
-
+        /// <summary>
+        /// Метод измения цвета фигуры на зеленый
+        /// </summary>
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -444,7 +464,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetColor(objCount, Color.Green);
         }
-
+        /// <summary>
+        /// Метод измения цвета фигуры на желтый
+        /// </summary>
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -454,7 +476,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetColor(objCount, Color.Yellow);
         }
-
+        /// <summary>
+        /// Метод измения цвета фигуры на красный
+        /// </summary>
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -464,7 +488,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetColor(objCount, Color.Red);
         }
-
+        /// <summary>
+        /// Метод измения цвета фигуры на фиолетовый
+        /// </summary>
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -474,7 +500,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetColor(objCount, Color.Purple);
         }
-
+        /// <summary>
+        /// Метод измения цвета фигуры на розовый
+        /// </summary>
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -484,7 +512,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetColor(objCount, Color.Pink);
         }
-
+        /// <summary>
+        /// Метод измения ширины линии фигуры на 1 px
+        /// </summary>
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -494,7 +524,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetWidth(objCount, 1);
         }
-
+        /// <summary>
+        /// Метод измения ширины линии фигуры на 2 px
+        /// </summary>
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -504,7 +536,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetWidth(objCount, 2);
         }
-
+        /// <summary>
+        /// Метод измения ширины линии фигуры на 3 px
+        /// </summary>
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -514,7 +548,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetWidth(objCount, 3);
         }
-
+        /// <summary>
+        /// Метод измения ширины линии фигуры на 4 px
+        /// </summary>
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -524,7 +560,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetWidth(objCount, 4);
         }
-
+        /// <summary>
+        /// Метод измения ширины линии фигуры на 5 px
+        /// </summary>
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
             if (selectedTool == "Line")
@@ -534,7 +572,9 @@ namespace VectorGrafEditer_Kursovaya
             if (selectedTool == "Rectangle")
                 rectangle.SetWidth(objCount, 5);
         }
-
+        /// <summary>
+        /// Метод измения ширины линии фигуры на 6 px
+        /// </summary>
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < objCount; i++)
@@ -553,7 +593,9 @@ namespace VectorGrafEditer_Kursovaya
             }
             pictureBox1.Invalidate();
         }
-
+        /// <summary>
+        /// Метод удаления всех изменений
+        /// </summary>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < objCount; i++)
@@ -573,7 +615,9 @@ namespace VectorGrafEditer_Kursovaya
             pictureBox1.Invalidate();
         }
 
-
+        /// <summary>
+        /// Метод закрытия приложения
+        /// </summary>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();

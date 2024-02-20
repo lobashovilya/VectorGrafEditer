@@ -79,14 +79,14 @@
             // newToolStripMenuItem
             // 
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(180, 22);
+            newToolStripMenuItem.Size = new Size(98, 22);
             newToolStripMenuItem.Text = "New";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(98, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -256,8 +256,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(toolStrip1);
             Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            Text = "Редактор";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
